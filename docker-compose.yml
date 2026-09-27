@@ -1,0 +1,30 @@
+services:
+  postgres.db:
+    image: 'postgres:13.10'
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DB_HOST: postgres.db
+      DB_PORT: 5432
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres.db:
+        condition: service_healthy
+
+volumes:
+  postgres-data:

@@ -1,0 +1,20 @@
+### Create user
+POST http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{"name": "John Doe", "age": 30, "dob": "1995-04-12", "location": "Berlin", "work": "Engineer"}
+
+### Get all users
+GET http://127.0.0.1:8000/users
+
+### Get one user
+GET http://127.0.0.1:8000/users/1
+
+### Update user
+PUT http://127.0.0.1:8000/users/1
+Content-Type: application/json
+
+{"name": "John Doe", "age": 31, "dob": "1995-04-12", "location": "Munich", "work": "Senior Engineer"}
+
+### Delete user
+DELETE http://127.0.0.1:8000/users/1

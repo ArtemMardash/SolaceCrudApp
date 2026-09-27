@@ -1,0 +1,22 @@
+#Secrets
+.env
+
+#Local Python env
+.venv/
+__pycache__/
+
+#IDE
+.idea/
+
+#Docker files
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+#Dev-only
+test_main.http
+README.md
+
+#git
+.gitignore
+
